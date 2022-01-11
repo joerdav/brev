@@ -1,3 +1,3 @@
-module github.com/joe-davidson1802/brev
+module github.com/jrdav/brev
 
-go 1.16
+go 1.17

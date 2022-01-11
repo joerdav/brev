@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/joe-davidson1802/brev/tokens"
+	"github.com/jrdav/brev/tokens"
 )
 
 func TestNextToken(t *testing.T) {
