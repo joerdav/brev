@@ -1,4 +1,4 @@
-# Brev
+Brev
 
 Just a toy language, I'm following along with <https://interpreterbook.com/> by Thorsten Ball <https://thorstenball.com/>.
 

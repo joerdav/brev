@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"io"
 
-	"github.com/jrdav/brev/tokens"
+	"gitlab.com/jrdav/brev/tokens"
 )
 
 type Lexer struct {

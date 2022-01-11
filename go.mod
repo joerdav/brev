@@ -1,3 +1,3 @@
-module github.com/jrdav/brev
+module gitlab.com/jrdav/brev
 
 go 1.17
