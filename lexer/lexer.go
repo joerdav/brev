@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"io"
 
-	"gitlab.com/jrdav/brev/tokens"
+	"github.com/joerdav/brev/tokens"
 )
 
 type Lexer struct {
@@ -27,15 +27,21 @@ var singleRuneTokens = map[rune]tokens.TokenType{
 	'=': tokens.ASSIGN,
 	'+': tokens.ADD,
 	'-': tokens.SUB,
+	'*': tokens.ASTERISK,
+	'/': tokens.SLASH,
+	'%': tokens.PERCENT,
 	'{': tokens.LBRC,
 	'}': tokens.RBRC,
 	'(': tokens.LBRK,
 	')': tokens.RBRK,
 	',': tokens.COMMA,
+	'!': tokens.BANG,
+	'<': tokens.LT,
+	'>': tokens.GT,
 }
 
 var keywords = map[string]tokens.TokenType{
-	"fn": tokens.FUNCTION,
+	"f": tokens.FUNCTION,
 }
 
 func (t *Lexer) NextToken() tokens.Token {
