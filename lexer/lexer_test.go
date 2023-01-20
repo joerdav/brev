@@ -36,6 +36,14 @@ dfunc = f(a, b int) {
 2/3
 2%3
 2<3>4
+
+i 5 < 10 {
+	T
+} ei 5 < 11 {
+	F
+} e {
+	T
+}
 `
 	r := strings.NewReader(input)
 	l := NewLexer(r)
@@ -156,7 +164,26 @@ dfunc = f(a, b int) {
 		{Type: tokens.GT, Literal: ">", Col: 3, Row: 27},
 		{Type: tokens.NUMBER, Literal: "4", Col: 4, Row: 27},
 
-		{Type: tokens.EOF, Literal: "", Col: 5, Row: 27},
+		{Type: tokens.IF, Literal: "i", Col: 0, Row: 29},
+		{Type: tokens.NUMBER, Literal: "5", Col: 2, Row: 29},
+		{Type: tokens.LT, Literal: "<", Col: 4, Row: 29},
+		{Type: tokens.NUMBER, Literal: "10", Col: 6, Row: 29},
+		{Type: tokens.LBRC, Literal: "{", Col: 9, Row: 29},
+		{Type: tokens.TRUE, Literal: "T", Col: 1, Row: 30},
+		{Type: tokens.RBRC, Literal: "}", Col: 0, Row: 31},
+		{Type: tokens.ELIF, Literal: "ei", Col: 2, Row: 31},
+		{Type: tokens.NUMBER, Literal: "5", Col: 5, Row: 31},
+		{Type: tokens.LT, Literal: "<", Col: 7, Row: 31},
+		{Type: tokens.NUMBER, Literal: "11", Col: 9, Row: 31},
+		{Type: tokens.LBRC, Literal: "{", Col: 12, Row: 31},
+		{Type: tokens.FALSE, Literal: "F", Col: 1, Row: 32},
+		{Type: tokens.RBRC, Literal: "}", Col: 0, Row: 33},
+		{Type: tokens.ELSE, Literal: "e", Col: 2, Row: 33},
+		{Type: tokens.LBRC, Literal: "{", Col: 4, Row: 33},
+		{Type: tokens.TRUE, Literal: "T", Col: 1, Row: 34},
+		{Type: tokens.RBRC, Literal: "}", Col: 0, Row: 35},
+
+		{Type: tokens.EOF, Literal: "", Col: 1, Row: 35},
 	}
 
 	for _, tok := range tests {

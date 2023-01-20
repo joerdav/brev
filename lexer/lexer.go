@@ -41,7 +41,12 @@ var singleRuneTokens = map[rune]tokens.TokenType{
 }
 
 var keywords = map[string]tokens.TokenType{
-	"f": tokens.FUNCTION,
+	"f":  tokens.FUNCTION,
+	"i":  tokens.IF,
+	"e":  tokens.ELSE,
+	"ei": tokens.ELIF,
+	"T":  tokens.TRUE,
+	"F":  tokens.FALSE,
 }
 
 func (t *Lexer) NextToken() tokens.Token {
