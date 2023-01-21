@@ -7,6 +7,33 @@ import (
 	"github.com/joerdav/brev/tokens"
 )
 
+func TestSingleNumberToken(t *testing.T) {
+	input := "5"
+	r := strings.NewReader(input)
+	l := NewLexer(r)
+
+	tests := []tokens.Token{
+		{Type: tokens.NUMBER, Literal: "5", Col: 0, Row: 0},
+		{Type: tokens.EOF, Literal: "", Col: 1, Row: 0},
+	}
+
+	for _, tok := range tests {
+		c := l.NextToken()
+		if c.Type != tok.Type {
+			t.Fatalf("c.Type for %s was not the expected value. want=%#v got=%#v", tok.Literal, tok, c)
+		}
+		if c.Literal != tok.Literal {
+			t.Fatalf("c.Literal was not the expected value. want=%#v got=%#v", tok, c)
+		}
+		if c.Col != tok.Col {
+			t.Fatalf("c.Col for %s was not the expected value. want=%#v got=%#v", tok.Literal, tok, c)
+		}
+		if c.Row != tok.Row {
+			t.Fatalf("c.Row for %s was not the expected value. want=%#v got=%#v", tok.Literal, tok, c)
+		}
+	}
+}
+
 func TestNextToken(t *testing.T) {
 	input := `
 num = 1
@@ -183,7 +210,7 @@ i 5 < 10 {
 		{Type: tokens.TRUE, Literal: "T", Col: 1, Row: 34},
 		{Type: tokens.RBRC, Literal: "}", Col: 0, Row: 35},
 
-		{Type: tokens.EOF, Literal: "", Col: 1, Row: 35},
+		{Type: tokens.EOF, Literal: "", Col: 0, Row: 36},
 	}
 
 	for _, tok := range tests {

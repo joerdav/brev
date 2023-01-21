@@ -50,10 +50,10 @@ var keywords = map[string]tokens.TokenType{
 }
 
 func (t *Lexer) NextToken() tokens.Token {
-	if t.current == nil || t.peek == nil {
+	t.eatWhitespace()
+	if t.current == nil && t.peek == nil {
 		return t.token(tokens.EOF, "")
 	}
-	t.eatWhitespace()
 	ty, single := singleRuneTokens[*t.current]
 	switch {
 	case validIdentFirstChar(*t.current):
